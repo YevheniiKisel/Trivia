@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // Load script just after DOM is completely loaded
+            document.addEventListener("DOMContentLoaded", function(){
+
+                //If correct answer was chosed, change color to greeen and print Correct!
+                let correct = document.querySelector(".correct");
+                correct.addEventListener('click', function(){
+                    correct.style.backgroundColor = "green";
+                    document.querySelector("#placeholderMultipleChoise").innerHTML = "Correct!";
+                });
+
+                //If incorrect answer was chosed, change color to red and print Incorrect.
+                let incorrect = document.querySelectorAll(".incorrect");
+                for (let i = 0; i < incorrect.length; i++ ){
+                    incorrect[i].addEventListener('click', function(){
+                    incorrect[i].style.backgroundColor = "red";
+                    document.querySelector("#placeholderMultipleChoise").innerHTML = "Incorrect.";
+                });
+                }
+
+                //If submit was correct
+                let submit = document.querySelector("#text");
+                let button = document.querySelector("#submit");
+                button.addEventListener('click', function(){
+                    if (submit.value == 'Grzegorz')
+                    {
+                        submit.style.backgroundColor = 'green';
+                        document.querySelector("#placeholderFreeResponse").innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        submit.style.backgroundColor = 'red';
+                        document.querySelector("#placeholderFreeResponse").innerHTML = "Incorrect."
+                    }
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the first capital of Poland?</h3>
+                <button class = "incorrect">Krakow</button>
+                <button class = "correct">Gniezno</button>
+                <button class = "incorrect">Warsaw</button>
+                <button class = "incorrect">Gdynia</button>
+                <p id = "placeholderMultipleChoise"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Please submit an iconic name of movie hero in one famous polish film about WW2:</h3>
+                <h3>" __________ Brzęczyszczykiewić"</h3>
+                <input id = "text" autocomplete = "off" type = "text">
+                <button id = "submit">Check answer</button>
+                <p id = "placeholderFreeResponse"></p>
+            </div>
+        </div>
+    </body>
+</html>
